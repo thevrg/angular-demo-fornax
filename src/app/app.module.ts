@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 import { CountersComponent } from './counters/counters.component';
+import { CourseFormComponent } from './course-form/course-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
-    CountersComponent
+    CountersComponent,
+    CourseFormComponent
   ],
   imports: [
     BrowserModule,

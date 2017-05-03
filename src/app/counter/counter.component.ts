@@ -14,8 +14,10 @@ export class CounterComponent implements OnInit, OnChanges {
 
   @Input()
   set counterValue(newCounterValue: number) {
-    this._counterValue = 0 + newCounterValue;
     console.log('setting counter value to ' + newCounterValue);
+    console.log('  typeof original ' + typeof newCounterValue);
+    this._counterValue = Number(newCounterValue);
+    console.log('  typeof converted ' + typeof this._counterValue);
   }
 
   get counterValue() {

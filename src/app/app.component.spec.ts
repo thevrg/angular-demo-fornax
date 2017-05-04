@@ -1,14 +1,22 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { CourseFormComponent } from './course-form/course-form.component';
+import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        CourseFormComponent
       ],
-    }).compileComponents();
+      imports: [
+        FormsModule,
+      ]
+    })
+    .overrideTemplate(CourseFormComponent, '<h2>courseform</h2>')
+    .compileComponents();
   }));
 
   it('should create the app', async(() => {
@@ -28,5 +36,12 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('app works!');
+  }));
+
+  it('should render the course form component', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h2').textContent).toContain('courseform');
   }));
 });

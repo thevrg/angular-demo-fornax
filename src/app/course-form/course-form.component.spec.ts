@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseFormComponent } from './course-form.component';
+import { FormsModule } from '@angular/forms';
 
 describe('CourseFormComponent', () => {
   let component: CourseFormComponent;
@@ -8,9 +9,13 @@ describe('CourseFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseFormComponent ]
+      declarations: [CourseFormComponent],
+      imports: [
+        FormsModule,
+      ]
+
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

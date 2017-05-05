@@ -1,4 +1,5 @@
 <h2>Course Form</h2>
+<h3>fruit: {{fruit}}</h3>
 <form (ngSubmit)="onSubmit()" #myForm="ngForm">
   <div class="form-group">
     <label for="name">Course name</label>
@@ -53,4 +54,5 @@
     </label>
   </div>
   <button class="btn btn-default" type="submit" [disabled]="!myForm.form.valid">Submit</button>
+  <button (click)="onRevert()" class="btn btn-default" type="button" [disabled]="!myForm.form.dirty">Revert</button>
 </form>

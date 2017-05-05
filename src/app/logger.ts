@@ -1,10 +1,14 @@
-const defaultLoggerProvider = (parent: Logger, name: string) => {
+export const defaultLoggerProvider = (parent: Logger, name: string) => {
     return new Logger(parent, name);
 };
 
 export class LogManager {
 
+    readonly rootLogger: Logger;
+
     constructor(readonly loggerMap = new Map<string, Logger>(), private loggerProvider = defaultLoggerProvider) {
+        this.rootLogger = this.loggerProvider(null, '');
+        this.loggerMap[''] = this.rootLogger;
     }
 
      getLogger(name: string): Logger {
@@ -13,7 +17,7 @@ export class LogManager {
              return logger;
          }
          const parsed = this.parseName(name);
-         let parentLogger: Logger = null;
+         let parentLogger: Logger = this.rootLogger;
          if (parsed.parentName) {
              parentLogger = this.getLogger(parsed.parentName);
          }
@@ -24,7 +28,7 @@ export class LogManager {
     parseName(name: string): {name: string, parentName: string} {
         const lastDotPosition = name.lastIndexOf('.');
         if (lastDotPosition < 0) {
-            return {name: name, parentName: null};
+            return {name: name, parentName: ''};
         } else {
             return {name: name.substr(lastDotPosition + 1), parentName: name.substring(0, lastDotPosition)};
         }
@@ -48,6 +52,15 @@ export interface LogHandler {
     handleLogMessage(level: LogLevel, message: string, timestamp: Date, exception: any);
 }
 
+export class ConsoleLogHandler implements LogHandler {
+    handleLogMessage(level: LogLevel, message: string, timestamp: Date, exception: any) {
+        console.log(`${level}: ${message}`);
+        if (exception) {
+            console.error('Error: ' + exception);
+        }
+    }
+}
+
 export class Logger {
 
     private _level: LogLevel = null;
@@ -56,6 +69,7 @@ export class Logger {
     constructor(readonly parent: Logger, readonly name: string) {
         if (this.parent === null) {
             this._level = LogLevel.INFO;
+            this._handlers.push(new ConsoleLogHandler());
         }
     }
 
@@ -77,7 +91,6 @@ export class Logger {
 
     handleMessage(level: LogLevel, message: string, exception: any) {
         this._handlers.forEach(handler =>  handler.handleLogMessage(level, message, new Date(), exception));
-        console.log(`${level}: ${message}`);
     }
 
     log(level: LogLevel, message: string, exception?: object): void {

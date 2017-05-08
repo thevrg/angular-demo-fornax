@@ -9,6 +9,9 @@ import { ReactiveCourseFormComponent } from '../reactive-course-form/reactive-co
 import { CounterComponent } from '../counter/counter.component';
 import { CountersComponent } from '../counters/counters.component';
 import { AsyncDemoComponent } from '../async-demo/async-demo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValidationErrorsComponent } from '../validation-errors/validation-errors.component';
+import { MyInputComponent } from '../my-input/my-input.component';
 
 describe('RouterDemoComponent', () => {
   let component: RouterDemoComponent;
@@ -16,14 +19,21 @@ describe('RouterDemoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot(appRoutes)],
+      imports: [
+        RouterModule.forRoot(appRoutes),
+        FormsModule,
+        ReactiveFormsModule
+      ],
       declarations: [
         RouterDemoComponent,
         CourseFormComponent,
         ReactiveCourseFormComponent,
         CountersComponent,
         CounterComponent,
-        AsyncDemoComponent],
+        ValidationErrorsComponent,
+        MyInputComponent,
+        AsyncDemoComponent
+      ],
       providers: [{ provide: APP_BASE_HREF, useValue: '/' }]
     })
       .compileComponents();

@@ -13,13 +13,22 @@ export class AsyncCourseService {
         this.courseInitiator.init(this._course);
     }
 
-    get course() {
-        return Object.assign({}, this._course);
-        // return this._course;
+    getCourse(): Promise<Course> {
+        const response = Object.assign({}, this._course);
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(response);
+            }, 1000);
+        });
     }
 
-    set course(changedCourse: Course) {
-        this._course = Object.assign({}, changedCourse);
+    setCourse(changedCourse: Course): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
+            setTimeout(() => {
+                this._course = changedCourse;
+                resolve();
+            }, 1000);
+        });
     }
 
 

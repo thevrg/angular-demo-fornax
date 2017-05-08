@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -8,6 +8,9 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 export class CounterComponent implements OnInit, OnChanges {
 
   private _counterValue: number;
+
+  @Output()
+  counterChanged: EventEmitter<number> = new EventEmitter<number>();
 
   @Input()
   color: string;
@@ -40,11 +43,13 @@ export class CounterComponent implements OnInit, OnChanges {
   increase(): void {
     console.log('increase');
     this._counterValue++;
+    this.counterChanged.emit(this._counterValue);
   }
 
   decrease(): void {
     console.log('decrease');
     this._counterValue--;
+    this.counterChanged.emit(this._counterValue);
   }
 
 }

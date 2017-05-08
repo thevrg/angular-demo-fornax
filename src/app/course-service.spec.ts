@@ -48,7 +48,7 @@ describe('CourseService', () => {
       //WHEN
       courseService = new CourseService(mockInitiator);
       //AND
-      let returnedCourse = courseService.course;
+      let returnedCourse = courseService.getCourse();
       //THEN
       expect(returnedCourse).toEqual(jasmine.objectContaining({ name: 'xyz' }));
     });
@@ -57,7 +57,7 @@ describe('CourseService', () => {
       //WHEN
       courseService = new CourseService(mockInitiator);
       //AND
-      let returnedCourse = courseService.course;
+      let returnedCourse = courseService.getCourse();
       //THEN
       expect(returnedCourse).not.toBe(initatorCalledWith);
     });

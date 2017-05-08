@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CountersComponent implements OnInit {
 
+  changeCounter = 0;
+
   @Input()
   redCounter: number;
 
@@ -29,6 +31,10 @@ export class CountersComponent implements OnInit {
 
   ngOnInit() {
     this.redCounter = Number(this.redCounter);
+  }
+
+  counterChanged(counter: number) {
+      this.changeCounter++;
   }
 
 }

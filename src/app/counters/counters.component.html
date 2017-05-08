@@ -1,7 +1,8 @@
 <div>
-  <app-counter [color]="'red'" [counterValue]="redCounter"></app-counter>
-  <app-counter color="green" [counterValue]="greenCounter"></app-counter>
-  <app-counter color="blue" [counterValue]="blueCounter"></app-counter>
+  Number of change events: {{changeCounter}}
+  <app-counter (counterChanged)="counterChanged($event)" [color]="'red'" [counterValue]="redCounter"></app-counter>
+  <app-counter (counterChanged)="counterChanged($event)" color="green" [counterValue]="greenCounter"></app-counter>
+  <app-counter (counterChanged)="counterChanged($event)" color="blue" [counterValue]="blueCounter"></app-counter>
 
   <ng-container *ngFor="let counter of counters; let idx=index; let first = first">
     <h3 *ngIf="first; else separatorTemplate">Counters</h3>
@@ -9,7 +10,7 @@
       <hr>
     </ng-template>
     Index: {{idx}}
-    <app-counter color="black" [counterValue]="counter.value"></app-counter>
+    <app-counter (counterChanged)="counterChanged($event)" color="black" [counterValue]="counter.value"></app-counter>
   </ng-container>
 
 

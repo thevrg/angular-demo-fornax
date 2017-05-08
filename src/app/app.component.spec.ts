@@ -3,19 +3,20 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { FormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { ReactiveCourseFormStubComponent } from './reactive-course-form/reactive-course-form.component.spec';
 
+// shallow testing example: AppComponent does not really create child components
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        CourseFormComponent
+        ReactiveCourseFormStubComponent
       ],
-      imports: [
-        FormsModule,
-      ]
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .overrideTemplate(CourseFormComponent, '<h2>courseform</h2>')
     .compileComponents();
   }));
 
@@ -41,7 +42,6 @@ describe('AppComponent', () => {
   it('should render the course form component', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h2').textContent).toContain('courseform');
+    expect(fixture.debugElement.query(By.directive(ReactiveCourseFormStubComponent))).toBeTruthy();
   }));
 });

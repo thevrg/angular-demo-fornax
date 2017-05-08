@@ -14,12 +14,12 @@ export class CourseService {
         this.courseInitiator.init(this._course);
     }
 
-    get course() {
+    getCourse() {
         return Object.assign({}, this._course);
         // return this._course;
     }
 
-    set course(changedCourse: Course) {
+    saveCourse(changedCourse: Course) {
         this._course = Object.assign({}, changedCourse);
     }
 

@@ -1,0 +1,21 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-validation-errors',
+  templateUrl: './validation-errors.component.html',
+  styleUrls: ['./validation-errors.component.css']
+})
+export class ValidationErrorsComponent implements OnInit {
+
+  @Input()
+  label: string;
+  @Input()
+  field: FormControl;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

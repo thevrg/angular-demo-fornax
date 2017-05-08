@@ -1,0 +1,9 @@
+<h2>Reactive Course Form</h2>
+<form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+  <app-my-input [form]="myForm" name="name" label="Course Name" type="text"></app-my-input>
+  <app-my-input [form]="myForm" name="description" label="Course Description" type="textarea"></app-my-input>
+  <app-my-input [form]="myForm" name="type" label="Course Type" type="select" [options]="courseTypeOptions"></app-my-input>
+  <app-my-input [form]="myForm" name="private" label="Private Course" type="checkbox"></app-my-input>
+  <button class="btn btn-default" type="submit" [disabled]="!myForm.valid">Submit</button>
+  <button (click)="onRevert()" class="btn btn-default" type="button" [disabled]="!myForm.dirty">Revert</button>
+</form>

@@ -1,58 +1,29 @@
 <h2>Course Form</h2>
-<h3>fruit: {{fruit}}</h3>
 <form (ngSubmit)="onSubmit()" #myForm="ngForm">
   <div class="form-group">
     <label for="name">Course name</label>
-    <input #name="ngModel" class="form-control" id="name" name="name" type="text" [(ngModel)]="course.name" 
-          required minlength="4" maxlength="20">
-    <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-      <div [hidden]="!name.errors.required">
-        Name is required
-      </div>
-      <div [hidden]="!name.errors.minlength">
-        Name must be at least 4 characters long.
-      </div>
-      <div [hidden]="!name.errors.maxlength">
-        Name cannot be more than 24 characters long.
-      </div>
-    </div>
+    <input class="form-control" id="name" name="name" type="text" [(ngModel)]="course.name" required minlength="4" maxlength="20">
+    <app-validation-errors displayName="Name" [field]="myForm.controls?.name"></app-validation-errors>
   </div>
   <div class="form-group">
     <label for="description">Course description</label>
-    <textarea #description="ngModel" class="form-control" id="description" name="description" [(ngModel)]="course.description" 
-          required minlength="10" maxlength="2000"></textarea>
-    <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
-      <div [hidden]="!description.errors.required">
-        Description is required
-      </div>
-      <div [hidden]="!description.errors.minlength">
-        Description must be at least 10 characters long.
-      </div>
-      <div [hidden]="!description.errors.maxlength">
-        Description cannot be more than 2000 characters long.
-      </div>
-    </div>
+    <textarea class="form-control" id="description" name="description" [(ngModel)]="course.description" required minlength="20" maxlength="2000"></textarea>
+    <app-validation-errors displayName="Description" [field]="myForm.controls?.description"></app-validation-errors>
   </div>
   <div class="form-group">
     <label for="type">Course type</label>
-    <select #type="ngModel" class="form-control" id="type" name="type" [(ngModel)]="course.type" 
-          required>
-          <option value="">Select One!</option>
+    <select class="form-control" id="type" name="type" [(ngModel)]="course.type" required> 
+          <option value="">None</option>
           <option *ngFor="let courseType of courseTypes" [value]="courseType.value">{{courseType.name}}</option>
     </select>
-    <div *ngIf="type.errors && (type.dirty || type.touched)" class="alert alert-danger">
-      <div [hidden]="!type.errors.required">
-        Course type is required
-      </div>
-    </div>
+    <app-validation-errors displayName="Course type" [field]="myForm.controls?.type"></app-validation-errors>
   </div>
-
   <div class="checkbox">
     <label>
-    <input type="checkbox" #private="ngModel" id="private" name="private" [(ngModel)]="course.private">
+    <input type="checkbox" id="private" name="private" [(ngModel)]="course.private">
     Private Course
     </label>
   </div>
-  <button class="btn btn-default" type="submit" [disabled]="!myForm.form.valid">Submit</button>
-  <button (click)="onRevert()" class="btn btn-default" type="button" [disabled]="!myForm.form.dirty">Revert</button>
+  <button class="btn btn-default" type="submit" [disabled]="!myForm.valid">Submit</button>
+  <button (click)="onRevert()" class="btn btn-default" type="button" [disabled]="!myForm.dirty">Revert</button>
 </form>

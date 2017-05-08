@@ -1,3 +1,27 @@
-<p>
-  my-input works!
-</p>
+<ng-container [ngSwitch]="type">
+  <ng-template ngSwitchCase="checkbox">
+    <div class="checkbox">
+      <label>
+      <input type="checkbox" [id]="name" [formControl]="formControl">
+      {{label}}
+    </label>
+    </div>
+  </ng-template>
+  <ng-template ngSwitchDefault>
+    <div class="form-group" [ngSwitch]="type">
+      <label [for]="name">{{label}}</label>
+      <ng-template ngSwitchCase="select">
+        <select class="form-control" [id]="name" [formControl]="formControl" [attr.required]="required">
+          <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+        </select>
+      </ng-template>
+      <ng-template ngSwitchCase="textarea">
+        <textarea class="form-control" [id]="name" [formControl]="formControl" [attr.required]="required"></textarea>
+      </ng-template>
+      <ng-template ngSwitchDefault>
+        <input class="form-control" [id]="name" [formControl]="formControl" [type]="type" [attr.required]="required">
+      </ng-template>
+      <app-validation-errors [label]="label" [field]="formControl"></app-validation-errors>
+    </div>
+  </ng-template>
+</ng-container>

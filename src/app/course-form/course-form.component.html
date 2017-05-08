@@ -3,12 +3,12 @@
   <div class="form-group">
     <label for="name">Course name</label>
     <input class="form-control" id="name" name="name" type="text" [(ngModel)]="course.name" required minlength="4" maxlength="20">
-    <app-validation-errors displayName="Name" [field]="myForm.controls?.name"></app-validation-errors>
+    <app-validation-errors label="Name" [field]="myForm.controls?.name"></app-validation-errors>
   </div>
   <div class="form-group">
     <label for="description">Course description</label>
     <textarea class="form-control" id="description" name="description" [(ngModel)]="course.description" required minlength="20" maxlength="2000"></textarea>
-    <app-validation-errors displayName="Description" [field]="myForm.controls?.description"></app-validation-errors>
+    <app-validation-errors label="Description" [field]="myForm.controls?.description"></app-validation-errors>
   </div>
   <div class="form-group">
     <label for="type">Course type</label>
@@ -16,7 +16,7 @@
           <option value="">None</option>
           <option *ngFor="let courseType of courseTypes" [value]="courseType.value">{{courseType.name}}</option>
     </select>
-    <app-validation-errors displayName="Course type" [field]="myForm.controls?.type"></app-validation-errors>
+    <app-validation-errors label="Course type" [field]="myForm.controls?.type"></app-validation-errors>
   </div>
   <div class="checkbox">
     <label>

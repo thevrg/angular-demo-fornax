@@ -20,7 +20,7 @@ export class ReactiveCourseFormComponent implements OnInit {
     return this._courseTypeOptions;
   }
 
-  constructor(private fb: FormBuilder, private courseService: CourseService,
+  constructor(private formBuilder: FormBuilder, private courseService: CourseService,
     @Inject(COURSE_TYPES_WITH_NAMES_KEY) private courseTypes: { value: CourseType, name: string }[]) {
     console.log('constructor of CourseFormComponent');
   }
@@ -29,7 +29,7 @@ export class ReactiveCourseFormComponent implements OnInit {
   ngOnInit() {
     this.course = this.courseService.getCourse();
     console.log(JSON.stringify(this.course));
-    this.myForm = this.fb.group({
+    this.myForm = this.formBuilder.group({
       name: [this.course.name, [
         Validators.required,
         Validators.minLength(4),
@@ -61,5 +61,6 @@ export class ReactiveCourseFormComponent implements OnInit {
 
   onRevert(): void {
     this.course = this.courseService.getCourse();
+    this.myForm.setValue(this.course);
   }
 }

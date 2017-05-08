@@ -17,7 +17,7 @@ describe('AppComponent', () => {
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   it('should create the app', async(() => {
@@ -42,6 +42,7 @@ describe('AppComponent', () => {
   it('should render the course form component', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.directive(ReactiveCourseFormStubComponent))).toBeTruthy();
+    expect(fixture.debugElement.query(By.directive(ReactiveCourseFormStubComponent)))
+      .toBeTruthy('ReactiveCourseFormStubComponent is not found in DOM');
   }));
 });

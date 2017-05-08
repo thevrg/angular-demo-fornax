@@ -3,5 +3,12 @@
 </h1>
 <!--<app-counters [redCounter]="11" [greenCounter]="12" [blueCounter]=" 13 + 1 ">
 </app-counters>-->
-<!--<app-reactive-course-form></app-reactive-course-form>-->
-<app-course-form></app-course-form>
+<ul>
+  <li><a routerLink="/form" routerLinkActive="active">Form Demo</a></li>
+  <li><a routerLink="/reactive-form" routerLinkActive="active">Reactive Form Demo</a></li>
+  <li><a routerLink="/counters" routerLinkActive="active">Counters Demo</a></li>
+  <li><a routerLink="/router" routerLinkActive="active">Router Demo</a></li>
+  <li><a routerLink="/async" routerLinkActive="active">Async Demo</a></li>
+</ul>
+<router-outlet></router-outlet>
+<!--<app-course-form></app-course-form>-->

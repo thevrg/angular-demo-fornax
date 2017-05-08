@@ -6,7 +6,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './validation-errors.component.html',
   styleUrls: ['./validation-errors.component.css']
 })
-export class ValidationErrorsComponent implements OnInit {
+export class ValidationErrorsComponent {
 
   @Input()
   label: string;
@@ -14,8 +14,5 @@ export class ValidationErrorsComponent implements OnInit {
   field: FormControl;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

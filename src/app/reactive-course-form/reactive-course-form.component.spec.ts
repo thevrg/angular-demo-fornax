@@ -64,4 +64,11 @@ describe('ReactiveCourseFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show validation error on empty name field', () => {
+    const nameComponent = component.myForm.controls.name;
+    nameComponent.setValue('');
+    expect(nameComponent.valid).toBeFalsy('Empty name should not be accepted');
+    expect(nameComponent.errors.required).toBeTruthy('Required error should be there');
+  });
 });

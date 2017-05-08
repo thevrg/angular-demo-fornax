@@ -6,7 +6,8 @@ import { Course } from '../course';
 @Component({
   selector: 'app-async-demo',
   templateUrl: './async-demo.component.html',
-  styleUrls: ['./async-demo.component.css']
+  styleUrls: ['./async-demo.component.css'],
+  providers: [AsyncCourseService]
 })
 export class AsyncDemoComponent implements OnInit {
 

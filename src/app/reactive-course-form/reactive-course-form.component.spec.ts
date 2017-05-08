@@ -39,10 +39,14 @@ describe('ReactiveCourseFormComponent', () => {
         ValidationErrorsComponent],
     })
       .overrideComponent(ReactiveCourseFormComponent,
-        {add: {providers: [
-          {provide: CourseService, useValue: courseService},
-          {provide: COURSE_TYPES_WITH_NAMES_KEY, useValue: courseTypesWithNames}
-          ]}})
+      {
+        add: {
+          providers: [
+            { provide: CourseService, useValue: courseService },
+            { provide: COURSE_TYPES_WITH_NAMES_KEY, useValue: courseTypesWithNames }
+          ]
+        }
+      })
       .compileComponents();
   }));
 

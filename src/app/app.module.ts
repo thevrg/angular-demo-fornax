@@ -17,7 +17,7 @@ import { AsyncDemoComponent } from './async-demo/async-demo.component';
 import { RouterDemoComponent } from './router-demo/router-demo.component';
 import { TemplateDemoComponent } from './template-demo/template-demo.component';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: 'form', component: CourseFormComponent },
   { path: 'reactive-form', component: ReactiveCourseFormComponent },
   { path: 'counters', component: CountersComponent },

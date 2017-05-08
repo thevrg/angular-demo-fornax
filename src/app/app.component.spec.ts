@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ReactiveCourseFormStubComponent } from './reactive-course-form/reactive-course-form.component.spec';
+import { RouterOutlet } from '@angular/router';
 
 // shallow testing example: AppComponent does not really create child components
 describe('AppComponent', () => {
@@ -39,10 +40,10 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
 
-  it('should render the course form component', async(() => {
+  it('should render the router-outlet', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.directive(ReactiveCourseFormStubComponent)))
-      .toBeTruthy('ReactiveCourseFormStubComponent is not found in DOM');
+    expect(fixture.debugElement.query(By.css('router-outlet')))
+      .toBeTruthy('router-outlet is not found in DOM');
   }));
 });

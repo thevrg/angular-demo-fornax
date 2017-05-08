@@ -6,7 +6,7 @@ import { CourseService } from '../course-service';
 import { Course, COURSE_TYPES_WITH_NAMES_KEY, courseTypesWithNames } from '../course';
 import { By } from '@angular/platform-browser';
 import { ValidationErrorsComponent } from '../validation-errors/validation-errors.component';
-import { spyOnGetter } from '../test-helpers';
+import { spyOnGetter } from '../test-helpers.spec';
 
 describe('Spy on Properties', () => {
   class Alma {

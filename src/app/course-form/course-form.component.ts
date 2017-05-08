@@ -16,6 +16,8 @@ export class CourseFormComponent implements OnInit {
 
   myForm: FormGroup;
 
+  CourseType = CourseType;
+
   constructor(private fb: FormBuilder, private courseService: CourseService,
     @Inject(COURSE_TYPES_WITH_NAMES_KEY) readonly courseTypes: { value: CourseType, name: string }[]) {
     console.log('constructor of CourseFormComponent');

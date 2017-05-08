@@ -12,6 +12,16 @@ export class AsyncCourseService {
         console.log('constructor of CourseService');
         this._course = new Course();
         this.courseInitiator.init(this._course);
+
+        setTimeout(() => {
+            this._course = new Course();
+            this._course.name = 'Hello';
+            this.courseChanges.emit(this._course);
+            setTimeout(() => {
+                this._course.name = 'Hello Changed';
+                this.courseChanges.emit(this._course);
+            }, 3000);
+        }, 3000);
     }
 
     getCourse(): Promise<Course> {
@@ -37,8 +47,20 @@ export class AsyncCourseService {
     }
 
     getCounterObservable(): Observable<number> {
-        return Observable.generate(0, x => x < 10, x => x + 1, x => x * 10)
-        .merge(Observable.timer(1000, 1000));
+        return Observable.timer(1000, 1000).
+        map(v => v * 10);
+
+        // return Observable.generate(0,
+        //     x => {
+        //         console.log('comparing x:' + x);
+        //         return x < 10;
+        //     }, x => {
+        //         console.log('iterating x:' + x);
+        //         return x + 1;
+        //     }, x => {
+        //         console.log('selecting result x:' + x);
+        //         return  x * 10;
+        //     });
     }
 
 }

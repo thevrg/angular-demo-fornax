@@ -12,6 +12,7 @@ import { Course } from '../course';
 export class AsyncDemoComponent implements OnInit {
 
   courseAsync: Observable<Course>;
+  counterAsync: Observable<number>;
 
   constructor(private asyncCourseService: AsyncCourseService) {
 
@@ -19,6 +20,7 @@ export class AsyncDemoComponent implements OnInit {
 
   ngOnInit() {
     this.courseAsync = this.asyncCourseService.getCourseChanges();
+    this.counterAsync = this.asyncCourseService.getCounterObservable();
   }
 
 }

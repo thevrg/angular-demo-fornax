@@ -16,6 +16,8 @@
           <option value="">None</option>
           <option *ngFor="let courseType of courseTypes" [value]="courseType.value">{{courseType.name}}</option>
     </select>
+    {{course.type}}
+    {{course.type + '' | i18nSelect:CourseType}}
     <app-validation-errors label="Course type" [field]="myForm.controls?.type"></app-validation-errors>
   </div>
   <div class="checkbox">

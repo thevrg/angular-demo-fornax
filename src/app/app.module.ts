@@ -21,6 +21,7 @@ export const appRoutes: Routes = [
   { path: 'form', component: CourseFormComponent },
   { path: 'reactive-form', component: ReactiveCourseFormComponent },
   { path: 'counters', component: CountersComponent },
+  { path: 'counters/:red/:green/:blue', component: CountersComponent },
   {
     path: 'router', component: RouterDemoComponent,
     children:

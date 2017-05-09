@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouterDemoComponent } from './router-demo.component';
 import { Router, RouterModule } from '@angular/router';
-import { appRoutes } from '../app.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { CourseFormComponent } from '../course-form/course-form.component';
 import { ReactiveCourseFormComponent } from '../reactive-course-form/reactive-course-form.component';
@@ -12,6 +11,7 @@ import { AsyncDemoComponent } from '../async-demo/async-demo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorsComponent } from '../validation-errors/validation-errors.component';
 import { MyInputComponent } from '../my-input/my-input.component';
+import {appRoutes} from "../app-routing.module";
 
 describe('RouterDemoComponent', () => {
   let component: RouterDemoComponent;

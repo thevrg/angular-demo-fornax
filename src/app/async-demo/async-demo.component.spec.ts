@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AsyncDemoComponent } from './async-demo.component';
 import { CourseInitiator } from '../course-service';
+import {AsyncCourseService} from "../async-course-service";
 
 describe('AsyncDemoComponent', () => {
   let component: AsyncDemoComponent;
@@ -10,7 +11,7 @@ describe('AsyncDemoComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AsyncDemoComponent ],
-      providers: [CourseInitiator]
+      providers: [CourseInitiator, AsyncCourseService]
     })
     .compileComponents();
   }));

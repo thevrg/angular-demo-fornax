@@ -47,20 +47,8 @@ export class AsyncCourseService {
     }
 
     getCounterObservable(): Observable<number> {
-        return Observable.timer(1000, 1000).
-        map(v => v * 10);
-
-        // return Observable.generate(0,
-        //     x => {
-        //         console.log('comparing x:' + x);
-        //         return x < 10;
-        //     }, x => {
-        //         console.log('iterating x:' + x);
-        //         return x + 1;
-        //     }, x => {
-        //         console.log('selecting result x:' + x);
-        //         return  x * 10;
-        //     });
+        return Observable.interval(1000).
+        map(v => v * 10).share();
     }
 
 }

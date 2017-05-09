@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
@@ -16,22 +15,12 @@ import { courseTypesWithNames, COURSE_TYPES_WITH_NAMES_KEY } from './course';
 import { AsyncDemoComponent } from './async-demo/async-demo.component';
 import { RouterDemoComponent } from './router-demo/router-demo.component';
 import { TemplateDemoComponent } from './template-demo/template-demo.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserService } from './users/user-service';
+import { AsyncCourseService } from './async-course-service';
+import { AppRoutingModule } from './app-routing.module';
+import {UsersModule} from './users/users.module';
 
-export const appRoutes: Routes = [
-  { path: 'form', component: CourseFormComponent },
-  { path: 'reactive-form', component: ReactiveCourseFormComponent },
-  { path: 'counters', component: CountersComponent },
-  { path: 'counters/:red/:green/:blue', component: CountersComponent },
-  {
-    path: 'router', component: RouterDemoComponent,
-    children:
-      [
-        { path: 'counters', component: CountersComponent },
-        { path: 'form', component: CourseFormComponent }
-      ]
-  },
-  { path: 'async', component: AsyncDemoComponent }
-];
 
 @NgModule({
   declarations: [
@@ -50,11 +39,14 @@ export const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpModule
+    AppRoutingModule,
+    HttpModule,
+    UsersModule
   ],
   providers: [
     CourseService,
+    AsyncCourseService,
+    UserService,
     CourseInitiator,
     { provide: COURSE_TYPES_WITH_NAMES_KEY, useValue: courseTypesWithNames }
   ],

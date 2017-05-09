@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import { ActivatedRoute, ParamMap, Router, NavigationExtras } from '@angular/router';
 @Component({
   selector: 'app-counters',
   templateUrl: './counters.component.html',
@@ -53,7 +52,7 @@ export class CountersComponent implements OnInit {
   redCounterChanged(counter: number) {
     this.redCounter = counter;
     console.log('navigation: ' + counter);
-    this.router.navigate(['counters', this.redCounter, this.greenCounter, this.blueCounter]);
+    this.router.navigate(['counters', this.redCounter, this.greenCounter, this.blueCounter], { queryParams: {red: this.redCounter }});
   }
 
   greenCounterChanged(counter: number) {
